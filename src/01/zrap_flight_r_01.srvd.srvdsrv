@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition for Flight'
+define service ZRAP_FLIGHT_R_01 {
+  expose ZRAP_C_Connection_R_01 as Connection;
+  expose ZRAP_C_Flight_R_01     as Flight;
+}

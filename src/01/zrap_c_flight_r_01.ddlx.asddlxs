@@ -1,0 +1,115 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: { typeName: 'Flight',
+                     typeNamePlural: 'Flights',
+                     title: { type: #STANDARD, value: 'FlightDate' }},
+       presentationVariant: [{ visualizations: [{type: #AS_LINEITEM}] }]}
+
+
+@UI.chart: [
+  {
+    qualifier: 'radialChart',
+    title: 'Occupation Rate',
+    description: 'Occupied seats in relation to maximum number of seats',
+    chartType: #DONUT,
+    measures: ['OccupiedSeatsForChart'],
+    measureAttributes: [
+      {
+        measure: 'OccupiedSeatsForChart',
+        role: #AXIS_1,
+        asDataPoint: true
+      }
+    ]
+  }
+]
+
+annotate entity ZRAP_C_Flight_R_01 with
+{
+  @UI.facet: [
+    {
+      id:              'Flight',
+      purpose:         #STANDARD,
+      type:            #COLLECTION,
+      label:           'Flight',
+      position:        10
+    },
+    {
+      id:              'General',
+      targetQualifier: 'General_FG',
+      parentId:        'Flight',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      label:           'General',
+      position:        10
+    },
+    {
+      id:              'Seats',
+      targetQualifier: 'Seats_FG',
+      parentId:        'Flight',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      label:           'Seats',
+      position:        20
+    },
+    {
+      purpose: #HEADER,
+      type: #COLLECTION,
+      id: 'CollectionFacet'
+    },
+    {
+      parentId   : 'CollectionFacet',
+      type       : #CHART_REFERENCE,
+      targetQualifier: 'radialChart'
+    }
+  ]
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'General_FG' }]
+  @UI.identification: [{ position: 10 }]
+  AirlineID;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'General_FG' }]
+  @UI.identification: [{ position: 20 }]
+  ConnectionID;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'General_FG' }]
+  @UI.identification: [{ position: 10 }]
+  FlightDate;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'General_FG' }]
+  @UI.identification: [{ position: 20 }]
+  Price;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'General_FG' }]
+  @UI.identification: [{ position: 30 }]
+  PlaneType;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Seats_FG' }]
+  @UI.identification: [{ position: 40 }]
+  MaximumSeats;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'Seats_FG' }]
+  @UI.identification: [{ position: 50 }]
+  OccupiedSeats;
+
+  @UI: {
+    dataPoint: {
+      qualifier: 'OccupiedSeatsForChart',
+      targetValueElement: 'MaximumSeats'
+    },
+    lineItem: [
+      {
+        type: #AS_CHART,
+        label: 'Occupation Rate',
+        valueQualifier: 'radialChart',
+        position: 60
+      }
+    ]
+  }
+  OccupiedSeatsForChart;
+
+}

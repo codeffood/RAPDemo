@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_NROB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <OBJECT>ZRAP_00</OBJECT>
+    <DOMLEN>/DMO/TRAVEL_ID</DOMLEN>
+    <PERCENTAGE>10.0</PERCENTAGE>
+    <NOIVBUFFER>00000010</NOIVBUFFER>
+    <UNAME>YUESHUAI</UNAME>
+    <UDATE>2025-11-02</UDATE>
+    <UTIME>12:24:42</UTIME>
+   </ATTRIBUTES>
+   <TEXT>
+    <LANGU>E</LANGU>
+    <OBJECT>ZRAP_00</OBJECT>
+    <TXT>Number Range RAP Number</TXT>
+    <TXTSHORT>Number Range</TXTSHORT>
+   </TEXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

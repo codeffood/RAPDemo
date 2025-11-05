@@ -1,0 +1,54 @@
+managed implementation in class zbp_rap_i_travel_02 unique;
+strict ( 2 );
+
+define behavior for ZRAP_I_TRAVEL_02 alias travel
+persistent table zrap_travel_02
+with additional save
+etag master last_changed_at
+lock master
+
+authorization master ( global )
+{
+
+  mapping for zrap_i_travel_02 corresponding ;
+
+  create ;
+  update ;
+  delete ;
+
+  association _booking { create ; }
+
+}
+
+define behavior for ZRAP_I_BOOKING_02 alias booking
+persistent table zrap_booking_02
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master last_changed_at
+{
+
+  field ( readonly ) travel_id;
+  mapping for zrap_booking_02 corresponding ;
+
+  update ;
+
+  association _booksupplement { create ; }
+
+  association _Travel { }
+
+}
+
+define behavior for ZRAP_I_BOOKSUPPL_02 alias booksuppl
+persistent table zrap_bookspl_02
+lock dependent by _Travel
+authorization dependent by _Travel
+etag master last_changed_at
+{
+  field ( readonly ) travel_id, booking_id;
+
+  mapping for zrap_bookspl_02 corresponding ;
+
+  update ;
+  association _travel { }
+  association _Booking { }
+}
