@@ -1,0 +1,15 @@
+projection;
+strict ( 2 );
+
+define behavior for ZRAP_C_TRAVEL_02 alias Travel
+{
+
+  use create;
+  use update;
+  use delete;
+
+  use action acceptTravel;
+  use action rejectTravel;
+  use action copyTravel;
+
+}

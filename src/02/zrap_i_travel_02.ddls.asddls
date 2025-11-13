@@ -2,7 +2,7 @@
 @EndUserText.label: 'Travel view - CDS data model'
 
 define root view entity ZRAP_I_TRAVEL_02 
-  as select from zrap_travel_02 as Travel 
+  as select from zrap_travel_02 as Travel                 
 
   composition [0..*] of ZRAP_I_BOOKING_02 as _Booking
 

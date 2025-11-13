@@ -1,0 +1,77 @@
+@Metadata.layer: #CORE
+annotate view ZRAP_C_BOOKING_02 with {
+
+  @EndUserText.label: 'Travel ID'
+  @UI: {
+    lineItem: [ { position: 10, importance: #HIGH } ],  // 数组形式
+    identification: [ { position: 10 } ],
+    hidden: false
+  }
+  TravelID;
+
+  @EndUserText.label: 'Booking ID'
+  @UI: {
+    lineItem: [ { position: 20, importance: #HIGH } ],
+    identification: [ { position: 20 } ],
+    hidden: false
+  }
+  BookingID;
+
+  @EndUserText.label: 'Booking Date'
+  @UI: {
+    lineItem: [ { position: 30 } ],
+    identification: [ { position: 30 } ]  
+  }
+  BookingDate;
+
+  @EndUserText.label: 'Customer ID'
+  @UI: {
+    lineItem: [ { position: 40 } ],
+    identification: [ { position: 40 } ]
+  }
+  CustomerID;
+
+  @EndUserText.label: 'Carrier'
+  @UI: {
+    lineItem: [ { position: 50 } ]
+  }
+  CarrierID;
+
+  @EndUserText.label: 'Connection'
+  @UI: {
+    lineItem: [ { position: 60 } ]
+  }
+  ConnectionID;
+
+  @EndUserText.label: 'Flight Date'
+  @UI: {
+    lineItem: [ { position: 70 } ]   
+  }
+  FlightDate;
+
+  @EndUserText.label: 'Flight Price'
+  @UI: {
+    lineItem: [ { position: 80, importance: #MEDIUM } ]   
+  }
+  FlightPrice;
+
+  @EndUserText.label: 'Currency'
+  @UI: {
+    lineItem: [ { position: 90 } ]
+  }
+  CurrencyCode;
+
+  @EndUserText.label: 'Booking Status'
+  @UI: {
+    lineItem: [ { position: 100, importance: #HIGH } ],
+    identification: [ { position: 50 } ]
+  }
+  BookingStatus;
+
+  @EndUserText.label: 'Last Changed'
+  @UI: {
+    lineItem: [ { position: 110, importance: #LOW } ]  
+  }
+  LastChangedAt;
+
+}

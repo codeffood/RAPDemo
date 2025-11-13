@@ -2,53 +2,61 @@ managed implementation in class zbp_rap_i_travel_02 unique;
 strict ( 2 );
 
 define behavior for ZRAP_I_TRAVEL_02 alias travel
+implementation in class zbp_rap_i_travel_02 unique
 persistent table zrap_travel_02
 with additional save
 etag master last_changed_at
 lock master
-
+early numbering
 authorization master ( global )
 {
 
-  mapping for zrap_i_travel_02 corresponding ;
+  mapping for zrap_travel_02 corresponding;
 
+  field (readonly) travel_id;
   create ;
   update ;
   delete ;
 
-  association _booking { create ; }
+  association _Booking { create ; }
+  // instance actions
+  action acceptTravel result [1] $self;
+  action rejectTravel result [1] $self;
 
+  // instance factory action for copying travel instances
+  factory action copyTravel [1];
+
+  // internal action that is called by determinations
+  internal action ReCalcTotalPrice;
 }
 
 define behavior for ZRAP_I_BOOKING_02 alias booking
+implementation in class zbp_rap_i_booking_02 unique
 persistent table zrap_booking_02
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master last_changed_at
 {
 
-  field ( readonly ) travel_id;
-  mapping for zrap_booking_02 corresponding ;
+  mapping for zrap_booking_02 corresponding;
 
+  field ( readonly ) travel_id ,booking_id;
   update ;
-
-  association _booksupplement { create ; }
-
+  association _BookSupplement { create ; }
   association _Travel { }
-
 }
 
 define behavior for ZRAP_I_BOOKSUPPL_02 alias booksuppl
+implementation in class zbp_rap_i_booksuppl_02 unique
 persistent table zrap_bookspl_02
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master last_changed_at
 {
-  field ( readonly ) travel_id, booking_id;
-
-  mapping for zrap_bookspl_02 corresponding ;
+  mapping for zrap_bookspl_02 corresponding;
+  field ( readonly ) travel_id, booking_id,booking_supplement_id;
 
   update ;
-  association _travel { }
+  association _Travel { }
   association _Booking { }
 }

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for 02(V4)'
+define service ZRAP_SDEF_TRAVEL_V4_02 {
+  expose ZRAP_C_TRAVEL_02 as Travel_V4;
+}
